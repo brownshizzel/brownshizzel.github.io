@@ -1,0 +1,314 @@
+<title>Shizzel Brown · Business Analyst</title>
+<style>
+:root{
+  --paper:#F6F6F4; --surface:#FFFFFF; --surface-2:#EFEFEC;
+  --ink:#16161A; --ink-2:#4A4A52; --ink-3:#84848E;
+  --rule:#DEDEDA; --rule-2:#E9E9E5;
+  --accent:#8E2C3B; --accent-2:#A94456; --accent-wash:#F4E9EB; --on-accent:#FFFFFF;
+  --live:#1E6B4F; --live-wash:#E6F0EB;
+  --sans:-apple-system,"Segoe UI Variable Display","Segoe UI",system-ui,Roboto,sans-serif;
+  --mono:"Cascadia Mono","SF Mono",Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#121214; --surface:#191920; --surface-2:#1E1E26;
+    --ink:#EDEDEA; --ink-2:#A8A8B2; --ink-3:#74747E;
+    --rule:#2A2A32; --rule-2:#232329;
+    --accent:#D4707C; --accent-2:#E08792; --accent-wash:#2A1A1E; --on-accent:#121214;
+    --live:#5FBF95; --live-wash:#16261F;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121214; --surface:#191920; --surface-2:#1E1E26;
+  --ink:#EDEDEA; --ink-2:#A8A8B2; --ink-3:#74747E;
+  --rule:#2A2A32; --rule-2:#232329;
+  --accent:#D4707C; --accent-2:#E08792; --accent-wash:#2A1A1E; --on-accent:#121214;
+  --live:#5FBF95; --live-wash:#16261F;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1020px; margin:0 auto; padding:0 28px}
+a{color:inherit}
+
+/* ---------- shared type ---------- */
+.eyebrow{
+  font-family:var(--mono); font-size:.6875rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 20px;
+}
+.sect-label{
+  font-family:var(--mono); font-size:.6875rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 34px;
+  padding-bottom:12px; border-bottom:1px solid var(--rule);
+}
+h2{
+  font-size:clamp(1.5rem,3.6vw,2rem); font-weight:700; letter-spacing:-.025em;
+  line-height:1.15; margin:0 0 14px; text-wrap:balance;
+}
+h3{font-size:1.0625rem; font-weight:650; letter-spacing:-.012em; margin:0 0 8px}
+p{margin:0 0 16px; max-width:64ch; color:var(--ink-2)}
+p.lead{color:var(--ink)}
+
+/* ---------- topbar ---------- */
+.topbar{
+  display:flex; align-items:baseline; justify-content:space-between; gap:20px;
+  padding:26px 0 0; flex-wrap:wrap;
+}
+.mark{font-weight:700; letter-spacing:-.02em; font-size:1rem}
+.nav{display:flex; gap:24px; font-family:var(--mono); font-size:.6875rem;
+     letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3)}
+.nav a{text-decoration:none}
+.nav a:hover{color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{padding:76px 0 64px; border-bottom:1px solid var(--rule)}
+h1{
+  font-size:clamp(2.1rem,6.4vw,4rem); font-weight:700;
+  letter-spacing:-.038em; line-height:1.04; margin:0 0 26px;
+  max-width:17ch; text-wrap:balance;
+}
+h1 em{font-style:normal; color:var(--accent)}
+.hero p{font-size:1.0625rem; max-width:56ch}
+.cta-row{display:flex; flex-wrap:wrap; gap:12px; margin:34px 0 0}
+.btn{
+  display:inline-block; font-family:var(--mono); font-size:.75rem;
+  letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
+  padding:13px 22px; border-radius:2px; transition:opacity .15s, background .15s;
+}
+.btn-solid{background:var(--accent); color:var(--on-accent)}
+.btn-solid:hover{opacity:.88}
+.btn-line{border:1px solid var(--rule); color:var(--ink)}
+.btn-line:hover{background:var(--surface-2)}
+.btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+
+/* ---------- credential strip ---------- */
+.strip{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  border-bottom:1px solid var(--rule);
+}
+.strip div{padding:26px 26px 26px 0}
+.strip dt{
+  font-family:var(--mono); font-size:.625rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 6px;
+}
+.strip dd{margin:0; font-size:.9375rem; color:var(--ink); font-weight:550}
+
+section{padding:72px 0}
+.bordered{border-bottom:1px solid var(--rule)}
+
+/* ---------- services ---------- */
+.svc{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:44px 40px}
+.svc article p{font-size:.9375rem; margin-bottom:0}
+.svc .num{
+  font-family:var(--mono); font-size:.6875rem; letter-spacing:.1em;
+  color:var(--accent); display:block; margin:0 0 12px;
+}
+
+/* ---------- work ---------- */
+.case{
+  display:grid; grid-template-columns:132px 1fr; gap:0 34px;
+  padding:38px 0; border-top:1px solid var(--rule-2);
+}
+.case:first-of-type{border-top:none; padding-top:0}
+.case-meta{font-family:var(--mono); font-size:.6875rem; letter-spacing:.08em; color:var(--ink-3); line-height:1.9}
+.badge{
+  display:inline-block; font-family:var(--mono); font-size:.5625rem;
+  letter-spacing:.12em; text-transform:uppercase; padding:3px 7px;
+  border-radius:2px; margin-top:4px;
+}
+.badge.live{background:var(--live-wash); color:var(--live)}
+.badge.built{background:var(--surface-2); color:var(--ink-2)}
+.badge.design{background:var(--accent-wash); color:var(--accent)}
+.case p{font-size:.9375rem}
+.case p:last-child{margin-bottom:0}
+.pull{
+  border-left:2px solid var(--accent); padding:2px 0 2px 16px;
+  margin:0 0 16px; color:var(--ink); font-size:.9375rem; max-width:60ch;
+}
+.stack{
+  font-family:var(--mono); font-size:.6875rem; color:var(--ink-3);
+  letter-spacing:.04em; margin:14px 0 0;
+}
+.case a.visit{
+  font-family:var(--mono); font-size:.6875rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--accent); text-decoration:none;
+  border-bottom:1px solid currentColor; padding-bottom:2px;
+}
+
+/* ---------- how ---------- */
+.how{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:34px 40px}
+.how article{border-top:2px solid var(--accent); padding-top:16px}
+.how p{font-size:.9375rem; margin-bottom:0}
+
+/* ---------- contact ---------- */
+.contact{padding:76px 0 90px}
+.contact h2{max-width:20ch}
+.contact-list{
+  list-style:none; padding:0; margin:30px 0 0;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px;
+}
+.contact-list dt{
+  font-family:var(--mono); font-size:.625rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 6px;
+}
+.contact-list dd{margin:0; font-size:.9375rem}
+.contact-list a{color:var(--accent); text-decoration:none; border-bottom:1px solid var(--rule)}
+.contact-list a:hover{border-color:currentColor}
+
+footer{
+  border-top:1px solid var(--rule); padding:26px 0 40px;
+  font-family:var(--mono); font-size:.625rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3);
+  display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  .hero{padding:52px 0 44px}
+  section{padding:54px 0}
+  .case{grid-template-columns:1fr; gap:14px}
+  .case-meta{display:flex; gap:12px; align-items:center; line-height:1.4}
+  .nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important; scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+
+<div class="topbar">
+  <span class="mark">Shizzel Brown</span>
+  <nav class="nav">
+    <a href="#work">Work</a>
+    <a href="#how">How I work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+
+<header class="hero">
+  <p class="eyebrow">Business analyst &middot; Accra, GMT</p>
+  <h1>I map the process, then <em>build</em> the thing that fixes it.</h1>
+  <p class="lead">Most analysts stop at the recommendation. Most developers start after the decision is already made. I do the part in between: work out what decision you&rsquo;re actually trying to make, then build the report, model or system that makes it obvious.</p>
+  <div class="cta-row">
+    <a class="btn btn-solid" href="#contact">Start a project</a>
+    <a class="btn btn-line" href="#work">See the work</a>
+  </div>
+</header>
+
+<dl class="strip">
+  <div><dt>Discipline</dt><dd>Business analysis, BI &amp; operations systems</dd></div>
+  <div><dt>Education</dt><dd>BSc Administration (Business Analytics), University of Ghana</dd></div>
+  <div><dt>Based</dt><dd>Accra, overlapping the EU working day and US mornings</dd></div>
+</dl>
+
+<section class="bordered">
+  <p class="sect-label">What I do</p>
+  <div class="svc">
+    <article>
+      <span class="num">01</span>
+      <h3>Power BI reporting</h3>
+      <p>A proper star-schema data model, DAX measures that hold up under slicers and time intelligence, scheduled refresh, and a recorded walkthrough so your team runs it without booking me again.</p>
+    </article>
+    <article>
+      <span class="num">02</span>
+      <h3>E-commerce &amp; retail analytics</h3>
+      <p>Contribution margin by SKU after cost of goods and ad spend, cohort and repeat-purchase analysis, stock cover and reorder modelling. Monthly reporting that ends in a decision instead of a chart.</p>
+    </article>
+    <article>
+      <span class="num">03</span>
+      <h3>Operations systems</h3>
+      <p>I map how work actually flows today, find where it breaks, then design and build the system that fixes it, with SOPs and training so it survives the next hire.</p>
+    </article>
+  </div>
+</section>
+
+<section class="bordered" id="work">
+  <p class="sect-label">Selected work</p>
+
+  <article class="case">
+    <div class="case-meta">2026<br><span class="badge built">Built</span></div>
+    <div>
+      <h3>Sales, margin and stock dashboard</h3>
+      <p>I&rsquo;d already built the point-of-sale system a skincare retailer runs on. It captured cost at the moment of sale and a signed stock ledger, but reported only what sold, not what earned. So I built the reporting layer on top of the data model I&rsquo;d designed.</p>
+      <div class="pull">The three best-selling products generate <strong>17.2% of revenue and 6.0% of gross profit.</strong> The number-one seller returns $1,128; a serum doing half its revenue returns $2,469.</div>
+      <p>The DAX reproduces the exact profit function the POS app already uses, so the report and the till can never disagree. Header discounts are allocated down to line grain, because margin per product can&rsquo;t be computed otherwise. Stock on hand is a running total of signed movements rather than a stored balance, which is what makes stock-on-hand at any historical date possible.</p>
+      <p class="stack">Power BI &middot; DAX &middot; star schema &middot; cohort retention &middot; 40 measures &middot; 4 pages</p>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="case-meta">2026<br><span class="badge live">Live</span></div>
+    <div>
+      <h3>Import storefront with a seven-stage order tracker</h3>
+      <p>Import orders were taken in a WhatsApp group and tracked on a spreadsheet. Shipping runs through a private consolidator, so there was no courier tracking number to give anyone. The team hand-answered &ldquo;where is my order&rdquo; all day.</p>
+      <p>I mapped the real fulfilment process and built the storefront around it: a custom WordPress child theme, hand-written page templates, and a PHP order tracker where a customer enters their order number and email and sees which of seven stages their goods have reached. Every off-the-shelf plugin assumes a courier API, and this business has no courier.</p>
+      <div class="pull">The tracker matches orders to stages by status <em>name</em>, not slug. WooCommerce silently truncates long custom status slugs, and matching on the slug would have failed quietly the first time a stage name ran long.</div>
+      <p class="stack">WooCommerce &middot; PHP &middot; custom child theme &middot; Paystack &middot; ~5,800 lines</p>
+      <p style="margin-top:14px"><a class="visit" href="https://brownscommercehub.com" target="_blank" rel="noopener">Visit the live store</a></p>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="case-meta">2026<br><span class="badge built">In rollout</span></div>
+    <div>
+      <h3>Point-of-sale, stock and receipting system</h3>
+      <p>Sales were written in a notebook and stock counted by eye, so nobody knew what actually sold or which products made money after cost. I mapped the sale-to-receipt process, agreed the requirements, then built it as a phone-first app.</p>
+      <p>Every sale, stock movement and void commits as a single database transaction, so inventory cannot drift out of step with sales. Voids restore stock without deleting history, because the history is the audit trail. Line items snapshot cost and price at the moment of sale, so historical margin stays true after a price change.</p>
+      <p class="stack">Next.js &middot; React &middot; Postgres &middot; PWA &middot; 9 screens</p>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="case-meta">2026<br><span class="badge design">Design</span></div>
+    <div>
+      <h3>Customer-service agent architecture</h3>
+      <p>Every enquiry landed in one inbox: &ldquo;how do I start a business&rdquo; beside &ldquo;where is my order&rdquo;, and each got a hand-typed reply whose quality depended on who answered.</p>
+      <p>I built the classification model behind an automated response: nine intents, each with recognition patterns, a defined next action and a goal. Sixty-three documented workflow branches, plus escalation points and policy rules the agent cannot break: no profit promises, no invented shipping dates.</p>
+      <p class="stack">Intent taxonomy &middot; workflow routing &middot; policy design &middot; specification only, not deployed</p>
+    </div>
+  </article>
+</section>
+
+<section class="bordered" id="how">
+  <p class="sect-label">How I work</p>
+  <div class="how">
+    <article>
+      <h3>Decision first, data second</h3>
+      <p>I ask what decision the work is meant to support before I touch the data. A dashboard nobody opens usually answered a question nobody had.</p>
+    </article>
+    <article>
+      <h3>The metric list, in writing</h3>
+      <p>Agreed before I build, so scope stays honest in both directions. It protects your budget as much as my time.</p>
+    </article>
+    <article>
+      <h3>Documented handover</h3>
+      <p>A recorded walkthrough and written notes. If you need me to run it every month, I&rsquo;ve built it wrong.</p>
+    </article>
+    <article>
+      <h3>Bad news early</h3>
+      <p>I&rsquo;ll tell you if your data can&rsquo;t answer the question you&rsquo;re asking. Finding that out in week three costs far more than hearing it in week one.</p>
+    </article>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <p class="sect-label">Get in touch</p>
+  <h2>A dashboard nobody opens, or a process that lives in one person&rsquo;s head?</h2>
+  <p class="lead">Send me the details and I&rsquo;ll tell you honestly whether I&rsquo;m the right fit, including when I&rsquo;m not.</p>
+  <dl class="contact-list">
+    <div><dt>Email</dt><dd><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></dd></div>
+    <div><dt>Upwork</dt><dd><a href="https://www.upwork.com/freelancers/~0128f469b47c8dca03" target="_blank" rel="noopener">Hire me on Upwork</a></dd></div>
+    <div><dt>Availability</dt><dd>Taking new work, 30+ hrs/week</dd></div>
+  </dl>
+</section>
+
+<footer>
+  <span>Shizzel Brown &middot; Business Analyst</span>
+  <span>Accra, Ghana</span>
+</footer>
+
+</div>
