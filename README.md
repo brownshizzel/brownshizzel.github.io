@@ -10,7 +10,7 @@ link gets sent on purpose.
 | Path | Page | Sent to |
 |---|---|---|
 | `/` | Business analyst who builds | Power BI, reporting and analytics clients |
-| `/va/` | Online business manager | Founders wanting operations and content run for them |
+| `/va/` | Executive assistant and content strategist | Founders wanting operations and content run for them |
 
 ## Structure
 
