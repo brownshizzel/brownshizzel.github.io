@@ -1,0 +1,266 @@
+<title>The EA Operating System</title>
+<style>
+:root{
+  --void:#050505; --void-2:#180209;
+  --card:rgba(13,13,19,.86); --card-2:rgba(255,255,255,.04);
+  --edge:rgba(255,255,255,.07); --edge-2:rgba(255,255,255,.12);
+  --ink:#FFFFFF; --ink-2:rgba(255,255,255,.80); --ink-3:rgba(255,255,255,.62);
+  --wine:#A81E42; --wine-2:#C42B52; --wine-lt:#E88FA3;
+  --gold:#D9BE6E; --gold-lt:#E8CF8A;
+  --grad-wine:linear-gradient(135deg,#A81E42,#C9506E);
+  --shadow:0 25px 80px rgba(0,0,0,.55);
+  --sans:-apple-system,"Segoe UI Variable Display","Segoe UI",system-ui,Roboto,sans-serif;
+  --mono:"Cascadia Mono","SF Mono",Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; overflow-x:hidden;
+  background:linear-gradient(135deg,var(--void) 0%,var(--void-2) 45%,#000000 100%);
+  background-attachment:fixed;
+  color:var(--ink); font-family:var(--sans); font-size:18px; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+.glow{position:fixed; pointer-events:none; z-index:0; filter:blur(10px)}
+.glow.g1{top:-12%; left:-12%; width:58vw; height:58vw;
+  background:radial-gradient(circle,rgba(190,35,75,.18) 0%,transparent 62%)}
+.glow.g2{bottom:-18%; right:-14%; width:52vw; height:52vw;
+  background:radial-gradient(circle,rgba(217,190,110,.09) 0%,transparent 62%)}
+.wrap{max-width:840px; margin:0 auto; padding:0 clamp(18px,4.5vw,28px); position:relative; z-index:1}
+a{color:var(--wine-lt)}
+
+.eyebrow{font-family:var(--mono); font-size:.8125rem; letter-spacing:.13em; font-weight:600;
+         text-transform:uppercase; color:var(--wine-lt); margin:0 0 22px}
+h1{font-size:clamp(2rem,5.6vw,3.2rem); font-weight:900; letter-spacing:-.045em;
+   line-height:1.05; margin:0 0 22px; text-wrap:balance}
+h2{font-size:clamp(1.4rem,3.4vw,1.85rem); font-weight:800; letter-spacing:-.03em;
+   line-height:1.2; margin:0 0 8px; text-wrap:balance}
+h3{font-size:1.0625rem; font-weight:750; letter-spacing:-.012em; margin:30px 0 10px}
+p{margin:0 0 17px; max-width:66ch; color:var(--ink-2)}
+.lead{font-size:1.09rem; color:var(--ink-2)}
+strong{font-weight:700; color:var(--ink)}
+header{padding:64px 0 44px; border-bottom:1px solid var(--edge)}
+.by{font-family:var(--mono); font-size:.75rem; letter-spacing:.1em; color:var(--ink-3);
+    text-transform:uppercase; margin-top:26px}
+.by a{border-bottom:1px solid var(--edge-2); text-decoration:none}
+
+section{padding:52px 0; border-bottom:1px solid var(--edge)}
+section:last-of-type{border-bottom:none}
+.num{font-family:var(--mono); font-size:.75rem; letter-spacing:.13em; color:var(--gold-lt);
+     text-transform:uppercase; margin:0 0 10px}
+
+.toc{background:var(--card); border:1px solid var(--edge); border-radius:20px;
+     padding:26px 28px; margin:36px 0 0; backdrop-filter:blur(14px)}
+.toc ol{margin:0; padding:0 0 0 20px}
+.toc li{margin:0 0 9px; color:var(--ink-2)}
+.toc a{text-decoration:none; border-bottom:1px solid transparent; transition:border-color .2s}
+.toc a:hover{border-color:currentColor}
+.toc .what{color:var(--ink-3); font-size:.9rem}
+
+.tw{overflow-x:auto; margin:0 0 20px; border:1px solid var(--edge); border-radius:14px;
+    background:var(--card)}
+table{border-collapse:collapse; width:100%; min-width:460px; font-size:.9375rem}
+th{text-align:left; font-family:var(--mono); font-weight:500; font-size:.75rem;
+   letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3);
+   padding:13px 16px; border-bottom:1px solid var(--edge); background:var(--card-2)}
+td{padding:13px 16px; border-bottom:1px solid var(--edge); vertical-align:top; color:var(--ink-2)}
+tbody tr:last-child td{border-bottom:none}
+td strong{color:var(--ink)}
+
+ul.plain{list-style:none; padding:0; margin:0 0 20px; max-width:66ch}
+ul.plain li{position:relative; padding:0 0 0 22px; margin:0 0 11px; color:var(--ink-2)}
+ul.plain li::before{content:""; position:absolute; left:0; top:.62em; width:8px; height:8px;
+                    border-radius:50%; background:var(--wine-2)}
+ul.plain.gold li::before{background:var(--gold)}
+
+.tmpl{background:var(--card); border:1px solid var(--edge); border-left:3px solid var(--wine-2);
+      border-radius:0 14px 14px 0; padding:20px 24px; margin:0 0 20px}
+.tmpl p{margin:0 0 12px; color:var(--ink-2)}
+.tmpl p:last-child{margin:0}
+.tmpl .label{font-family:var(--mono); font-size:.75rem; letter-spacing:.11em;
+             text-transform:uppercase; color:var(--wine-lt); margin:0 0 12px}
+.callout{background:linear-gradient(135deg,rgba(217,190,110,.11),rgba(13,13,19,.8) 70%);
+         border:1px solid rgba(217,190,110,.3); border-radius:16px; padding:22px 26px; margin:0 0 22px}
+.callout p{margin:0; max-width:70ch}
+footer{padding:40px 0 60px; font-family:var(--mono); font-size:.75rem; letter-spacing:.1em;
+       text-transform:uppercase; color:var(--ink-3);
+       display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+footer a{text-decoration:none; border-bottom:1px solid var(--edge-2)}
+@media (max-width:640px){ body{font-size:17px} section{padding:40px 0} }
+@media (prefers-reduced-motion:reduce){*{transition:none !important; scroll-behavior:auto !important}}
+</style>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">A work sample</p>
+  <h1>The EA Operating System</h1>
+  <p class="lead">The toolkit I hand a client in week one. Most assistants arrive and wait to be told what to do. This is the alternative: six documents that get filled in during the first fortnight and then run the relationship, so the answer to "what do I do about this?" is written down rather than living in my head.</p>
+  <div class="callout">
+    <p><strong>Why that matters to you.</strong> If I disappeared tomorrow, someone else could pick this up and keep your week running. You are not buying a person who knows how things work. You are buying a system that happens to be operated by me.</p>
+  </div>
+  <div class="toc">
+    <ol>
+      <li><a href="#s1">Onboarding questionnaire</a> <span class="what">what I need before touching anything</span></li>
+      <li><a href="#s2">Escalation matrix</a> <span class="what">what I handle, draft, or never touch</span></li>
+      <li><a href="#s3">Inbox rules and templates</a> <span class="what">how email gets triaged</span></li>
+      <li><a href="#s4">Weekly check-in</a> <span class="what">five minutes of your attention, once a week</span></li>
+      <li><a href="#s5">Meetings</a> <span class="what">agenda before, actions after</span></li>
+      <li><a href="#s6">Monthly report</a> <span class="what">what happened, what it cost</span></li>
+    </ol>
+  </div>
+  <p class="by">Built by <a href="../va/">Shizzel Brown</a>, executive assistant and content strategist, Accra</p>
+</header>
+
+<section id="s1">
+  <p class="num">Document 01</p>
+  <h2>Onboarding questionnaire</h2>
+  <p>Thirty minutes, once, in week one. It saves the fortnight of small interruptions that usually follows a handover. Thirty-three questions across seven areas: how you want to work, your calendar, your inbox, your people, your tools, your boundaries, and what done looks like.</p>
+  <p>The questions that do the most work are the uncomfortable ones:</p>
+  <ul class="plain">
+    <li>What is the largest amount I can spend without asking?</li>
+    <li>What decisions would you be annoyed to find I had made alone?</li>
+    <li>What decisions would you be annoyed to be <em>asked</em> about?</li>
+    <li>What would make you say this was not working?</li>
+  </ul>
+  <p>Those four answers become the escalation matrix, which is the document everything else depends on.</p>
+</section>
+
+<section id="s2">
+  <p class="num">Document 02</p>
+  <h2>Escalation matrix</h2>
+  <p>The most important document in the set. Everything else is admin.</p>
+  <div class="callout">
+    <p>An assistant who asks about everything is a second job. An assistant who asks about nothing is a risk. This is where we agree exactly where that line sits, in writing, so neither of us is guessing.</p>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Lane</th><th>What it means</th><th>You find out</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Handle</strong></td><td>I do it, you never hear about it</td><td>In the weekly, if at all</td></tr>
+      <tr><td><strong>Draft</strong></td><td>I prepare it, you approve before it goes</td><td>Same day, batched</td></tr>
+      <tr><td><strong>Escalate</strong></td><td>I stop and bring it to you</td><td>Immediately</td></tr>
+    </tbody>
+  </table></div>
+  <h3>The rule for everything not on the list</h3>
+  <p>No matrix anticipates everything. So when something new arrives, I apply one test: <strong>is this reversible, and is it cheap to be wrong?</strong></p>
+  <div class="tw"><table>
+    <thead><tr><th>Reversible</th><th>Cost of being wrong</th><th>What I do</th></tr></thead>
+    <tbody>
+      <tr><td>Yes</td><td>Low</td><td>Handle it, mention it in the weekly</td></tr>
+      <tr><td>Yes</td><td>High</td><td>Draft it and check</td></tr>
+      <tr><td>No</td><td>Low</td><td>Draft it and check</td></tr>
+      <tr><td>No</td><td>High</td><td>Escalate, always</td></tr>
+    </tbody>
+  </table></div>
+  <p>Rescheduling an internal call is reversible and cheap. Sending a quote is neither. That single test means you rarely have to add rows for things nobody anticipated.</p>
+  <h3>How I flag things</h3>
+  <p>I do not drip-feed. Things that can wait get batched, so you are interrupted once rather than eleven times.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Urgency</th><th>How I tell you</th><th>What I expect</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Now</strong></td><td>Direct message, marked urgent</td><td>Interrupt whatever you are doing</td></tr>
+      <tr><td><strong>Today</strong></td><td>One batched message, once</td><td>An answer before end of day</td></tr>
+      <tr><td><strong>This week</strong></td><td>Weekly check-in</td><td>Answered Monday</td></tr>
+      <tr><td><strong>Noted</strong></td><td>Weekly summary line</td><td>No response needed</td></tr>
+    </tbody>
+  </table></div>
+  <h3>When I get it wrong</h3>
+  <p>I tell you the same day: what happened, what I have already done about it, and what I am changing so it does not repeat. Then the change goes into this document. The failure mode I am guarding against is an assistant who hides a mistake for a week, which is worse than the mistake almost every time.</p>
+  <p>The matrix should get <em>shorter</em> over time. One that keeps growing means I am still asking about things I should have learned.</p>
+</section>
+
+<section id="s3">
+  <p class="num">Document 03</p>
+  <h2>Inbox rules and response templates</h2>
+  <p>Inbox management fails for one reason: the assistant answers things they should have escalated, or escalates things they should have answered. Both make you trust the inbox less.</p>
+  <h3>Every email lands in one of six buckets</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Bucket</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Answer</strong></td><td>I reply from a template, you never see it</td></tr>
+      <tr><td><strong>Schedule</strong></td><td>I book it inside your rules and confirm</td></tr>
+      <tr><td><strong>Chase</strong></td><td>I follow up, track it, close the loop</td></tr>
+      <tr><td><strong>Draft</strong></td><td>I write it, you approve, I send</td></tr>
+      <tr><td><strong>Decide</strong></td><td>Batched to you with a recommendation</td></tr>
+      <tr><td><strong>Archive</strong></td><td>Filed, never surfaced</td></tr>
+    </tbody>
+  </table></div>
+  <p>Nothing sits unsorted. An email that has not been categorised by end of day is the one that becomes a problem three weeks later.</p>
+  <h3>Inbox zero, defined honestly</h3>
+  <p>Zero does not mean everything is answered. It means <strong>every email has been categorised and has a next step</strong>. Some are waiting on you. Some are waiting on a third party. None are waiting on me.</p>
+  <h3>Two of the templates</h3>
+  <div class="tmpl">
+    <p class="label">Chasing a contractor, second attempt</p>
+    <p>Hi [name], following up on the below. I have not heard back and [dependent thing] is waiting on it.</p>
+    <p>Can you give me a date by end of day today, even if the date is further out than we hoped?</p>
+  </div>
+  <div class="tmpl">
+    <p class="label">The suspicious request</p>
+    <p>Not sent. Escalated. Any email asking for payment details, credentials, gift cards, or urgency plus secrecy goes to you unanswered, no matter who it appears to be from.</p>
+  </div>
+  <h3>The chase log</h3>
+  <p>Anything in Chase goes into a tracker with who, what, when asked, and when I follow up next. Default cadence: three days, then seven, then flagged to you. Nothing gets chased forever without you knowing it is stuck.</p>
+</section>
+
+<section id="s4">
+  <p class="num">Document 04</p>
+  <h2>Weekly check-in</h2>
+  <p>Sent every Monday before your day starts. Written, not a meeting: a standing call costs you thirty minutes, this costs five and leaves a record.</p>
+  <ul class="plain gold">
+    <li><strong>Needs you this week.</strong> Three things at most, each with a recommendation and a deadline</li>
+    <li><strong>Moving without you.</strong> What I am handling, listed so nothing is a surprise later</li>
+    <li><strong>Waiting on other people.</strong> Who, what, since when, when I chase next</li>
+    <li><strong>Your week at a glance.</strong> Meetings, deadlines, anything that eats a block</li>
+    <li><strong>Closed since last week.</strong> The part that shows the cost of me is worth it</li>
+  </ul>
+  <h3>Rules I hold myself to</h3>
+  <p><strong>Three decisions maximum.</strong> If I bring you nine, I have not done my job. <strong>Every decision comes with a recommendation</strong>, never a menu. <strong>Deadlines on everything</strong>, because "when you get a chance" is how things rot. And <strong>nothing appears here for the first time if it was urgent</strong>: urgent things reached you when they happened, and knowing which is which is the job.</p>
+  <p>I send it even in quiet weeks. A weekly that says "nothing needs you, here is what moved" is the most reassuring message an assistant can send, and skipping it is how clients start wondering what you are doing.</p>
+</section>
+
+<section id="s5">
+  <p class="num">Document 05</p>
+  <h2>Meetings</h2>
+  <p>Most meetings fail before they start, because nobody wrote down what it was for. Three templates used in sequence: an agenda the day before, decisions and actions captured during, a follow-up within two hours while people still remember agreeing to things.</p>
+  <p>The agenda includes a <strong>"not covering"</strong> line, naming the things people will otherwise raise. It saves more time than everything else combined.</p>
+  <div class="callout">
+    <p>An action item without an owner and a date is a wish. Every action goes into the chase log with a follow-up date, or the whole value of taking notes is destroyed.</p>
+  </div>
+  <h3>Meetings I will push back on</h3>
+  <p>Protecting your time means saying so when a meeting does not deserve it. I raise it once, suggest an alternative, then do whatever you decide.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Situation</th><th>What I suggest instead</th></tr></thead>
+    <tbody>
+      <tr><td>No decision needed</td><td>A written update</td></tr>
+      <tr><td>One person talking</td><td>A recorded message</td></tr>
+      <tr><td>Same attendees, third time this month</td><td>One standing slot, consolidated</td></tr>
+      <tr><td>Could be resolved in three emails</td><td>Three emails</td></tr>
+      <tr><td>No agenda by the day before</td><td>Postpone until there is one</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s6">
+  <p class="num">Document 06</p>
+  <h2>Monthly report</h2>
+  <p>Two pages, within three working days of month end. It answers three questions: what happened, what it cost, and what I would change.</p>
+  <p>A retainer is easy to keep paying and easy to quietly resent. This is the document that makes the value visible, including when the honest answer is that a month was quiet.</p>
+  <ul class="plain gold">
+    <li><strong>What moved.</strong> Outcomes, not a task list</li>
+    <li><strong>By the numbers.</strong> Emails handled, meetings scheduled, items chased to done, still waiting on others, hours used against the retainer</li>
+    <li><strong>What is stuck.</strong> What is blocked, on whom, how long. The section most assistants leave out, and the one that earns trust</li>
+    <li><strong>What I would change.</strong> One or two recommendations with reasoning</li>
+    <li><strong>Coming up.</strong> Anything needing your attention early rather than late</li>
+  </ul>
+  <p><strong>Including hours used matters.</strong> If I am consistently under, I say so and suggest dropping a tier. Volunteering that is what makes the number believable when I say I am over.</p>
+</section>
+
+<footer>
+  <span>The EA Operating System</span>
+  <span><a href="../va/">Back to Shizzel Brown</a></span>
+</footer>
+
+</div>
