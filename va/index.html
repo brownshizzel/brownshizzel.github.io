@@ -51,10 +51,8 @@ p.lead{color:var(--ink-2); font-size:clamp(1rem,1.6vw,1.09rem)}
 strong{font-weight:700; color:var(--ink)}
 
 /* ---------- topbar ---------- */
-.topbar{display:flex; align-items:center; justify-content:space-between;
+.topbar{display:flex; align-items:center; justify-content:flex-end;
         gap:20px; padding:28px 0 0; flex-wrap:wrap}
-.mark{font-weight:900; letter-spacing:-.04em; font-size:1.15rem; color:var(--ink)}
-.mark span{color:var(--wine-2)}
 .nav{display:flex; gap:24px; font-family:var(--mono); font-size:.8125rem;
      letter-spacing:.11em; text-transform:uppercase; color:var(--ink-3)}
 .nav a{text-decoration:none; position:relative; padding-bottom:4px; transition:color .25s}
@@ -69,6 +67,24 @@ strong{font-weight:700; color:var(--ink)}
 h1{font-size:clamp(2rem,5.8vw,3.5rem); font-weight:900; letter-spacing:-.045em;
    line-height:1.03; margin:0 0 24px; color:var(--ink); text-wrap:balance}
 h1 .b{color:var(--wine-2)} h1 .f{color:var(--gold-lt)}
+
+/* ---------- identity header ---------- */
+h1.name{font-size:clamp(2.6rem,8vw,4.6rem); letter-spacing:-.05em; line-height:.97; margin:0 0 16px}
+h1.name span{color:var(--wine-2)}
+.role-line{font-family:var(--mono); font-size:clamp(.8rem,2vw,.9375rem); font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--gold-lt); margin:0 0 20px}
+.contact-line{display:flex; flex-wrap:wrap; gap:8px 20px; margin:0 0 28px;
+  font-family:var(--mono); font-size:.8125rem; letter-spacing:.03em}
+.contact-line a{color:var(--ink-2); text-decoration:none; padding-bottom:3px;
+  border-bottom:1px solid var(--edge-2); transition:color .25s, border-color .25s}
+.contact-line a:hover{color:var(--gold-lt); border-color:var(--gold)}
+.contact-line a:focus-visible{outline:2px solid var(--wine-lt); outline-offset:3px; border-radius:2px}
+.bio{font-size:1.0625rem; color:var(--ink-2); max-width:56ch; margin:0 0 26px}
+.edu{border-left:2px solid var(--wine); padding-left:18px; margin:0}
+.edu dt{font-family:var(--mono); font-size:.6875rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 7px}
+.edu dd{margin:0; font-size:.9375rem; line-height:1.6; color:var(--ink-3)}
+.edu dd b{display:block; color:var(--ink); font-weight:700; font-size:1rem}
 .portrait{border-radius:24px; overflow:hidden; aspect-ratio:3/4;
   border:1px solid var(--edge-2); box-shadow:var(--shadow), 0 0 60px var(--wine-glow);
   transition:transform .55s cubic-bezier(.2,.7,.3,1), box-shadow .55s}
@@ -275,7 +291,6 @@ footer{padding:34px 0 46px; font-family:var(--mono); font-size:.75rem; letter-sp
 <div class="wrap">
 
 <div class="topbar">
-  <span class="mark">Shizzel <span>Brown</span></span>
   <nav class="nav">
     <a href="#services">Services</a>
     <a href="#work">Work</a>
@@ -286,10 +301,18 @@ footer{padding:34px 0 46px; font-family:var(--mono); font-size:.75rem; letter-sp
 
 <header class="hero">
   <div>
-    <p class="eyebrow rise" style="--d:0ms">Executive assistant &amp; content strategist &middot; Accra, GMT</p>
-    <h1 class="rise" style="--d:90ms">I run the <span class="b">back office</span> and the <span class="f">front of house</span>.</h1>
-    <p class="lead rise" style="--d:180ms">Operations and content for founders who are currently doing both themselves. I take the admin and the posting off your plate, and I build the systems that keep them running whether or not I am the one at the keyboard.</p>
-    <div class="cta-row rise" style="--d:270ms">
+    <h1 class="name rise" style="--d:0ms">Shizzel <span>Brown</span></h1>
+    <p class="role-line rise" style="--d:70ms">Executive assistant &amp; content strategist &middot; Accra, GH</p>
+    <div class="contact-line rise" style="--d:130ms">
+      <a href="mailto:brownshizzel21@gmail.com">brownshizzel21@gmail.com</a>
+      <a href="https://www.upwork.com/freelancers/shizzelb" target="_blank" rel="noopener">Upwork</a>
+    </div>
+    <p class="bio rise" style="--d:190ms">I run two businesses of my own in Accra, a skincare retail brand and an importation company, and I built the systems behind both: the stock and order tracking, the SOPs, the content that brings people in. I do that work for founders now. You are not paying me to learn your operation on your budget.</p>
+    <dl class="edu rise" style="--d:250ms">
+      <dt>Education</dt>
+      <dd><b>BSc Administration, Business Analytics option</b>University of Ghana, Legon &middot; 2023&ndash;2026</dd>
+    </dl>
+    <div class="cta-row rise" style="--d:310ms">
       <a class="btn btn-solid" href="#rates">See the packages</a>
       <a class="btn btn-line" href="https://calendly.com/brownshizzel" target="_blank" rel="noopener">Book a 20-minute call</a>
     </div>
